@@ -156,9 +156,9 @@ class NBResponseError(Exception):
         self.url = url
         self.header = header
         self.body = body
-        print url
-        print "Header: %s" % header
-        print "Body: %s" % body
+        print(url)
+        print(("Header: %s" % header))
+        print(("Body: %s" % body))
         Exception.__init__(self, msg)
 
 

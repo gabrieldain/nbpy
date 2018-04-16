@@ -23,7 +23,7 @@
 People Tags API. See http://nationbuilder.com/people_tags_api for more details.
 """
 
-import urllib2
+import urllib.parse
 from nb_api import NationBuilderApi
 import json
 
@@ -48,7 +48,7 @@ class NBTags(NationBuilderApi):
         """
         self._authorise()
         page = 1
-        url = self.GET_BY_TAG_URL.format(tag=urllib2.quote(str(tag), ''),
+        url = self.GET_BY_TAG_URL.format(tag=urllib.parse.quote(str(tag), ''),
                                          page=page,
                                          per_page=str(per_page))
         header, content = self.http.request(url, headers=self.HEADERS)
@@ -125,8 +125,8 @@ class NBTags(NationBuilderApi):
             None.
         """
         self._authorise()
-        url = self.REMOVE_TAG_URL.format(urllib2.quote(str(person_id)),
-                                         urllib2.quote(str(tag)))
+        url = self.REMOVE_TAG_URL.format(urllib.parse.quote(str(person_id)),
+                                         urllib.parse.quote(str(tag)))
         hdr, cnt = self.http.request(url, method="DELETE",
                                      headers=self.HEADERS)
         self._check_response(hdr, cnt,
@@ -150,7 +150,7 @@ class NBTags(NationBuilderApi):
         url = self.PERSON_TAGS_URL.format(str(nb_id))
         body = {
             "tagging":
-            {"tag": urllib2.quote(tag)}
+            {"tag": urllib.parse.quote(tag)}
         }
         hdr, cnt = self.http.request(url, method="PUT",
                                      headers=self.HEADERS,

@@ -76,7 +76,7 @@ class Contacts(nb_api.NationBuilderApi):
             update['contact']['note'] = note
 
         update = json.dumps(update)
-        print str(update)
+        print(str(update))
 
         header, content = self.http.request(url, headers=self.HEADERS,
                                             method='POST', body=str(update))
