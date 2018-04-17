@@ -150,7 +150,7 @@ class NBTags(NationBuilderApi):
         url = self.PERSON_TAGS_URL.format(str(nb_id))
         body = {
             "tagging":
-            {"tag": urllib2.quote(tag)}
+            {"tag": tag}
         }
         hdr, cnt = self.http.request(url, method="PUT",
                                      headers=self.HEADERS,
